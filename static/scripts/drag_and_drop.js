@@ -1,22 +1,26 @@
 import { uploadPdf } from "./uploadPdf.js";
 
 export function initDragAndDrop(dropZone) {
+  console.log(dropZone);
   function preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
   }
 
   function onDragOver(e) {
+    console.log("onDragOver");
     preventDefaults(e);
     dropZone.classList.add("dragover");
   }
 
   function onDragLeave(e) {
+    console.log("onDragLeave")
     preventDefaults(e);
     dropZone.classList.remove("dragover");
   }
 
   function onDrop(e) {
+    console.log("onDrop");
     preventDefaults(e);
     dropZone.classList.remove("dragover");
 

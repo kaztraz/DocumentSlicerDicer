@@ -31,17 +31,28 @@ h1 {
 }
 
 #drop-zone {
-  border: 2px dashed black;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 200px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 1rem;
-  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.3);
+  z-index: 1; /* lower z-index value */
 }
+
+#drop-zone p {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 0.8em;
+}
+
 
 #drop-zone.highlight {
   background-color: #c3c3c3;
@@ -118,4 +129,15 @@ h1 {
   background: #333;
   cursor: pointer;
   border-radius: 50%;
+}
+
+
+#floating-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #f2f2f2;
+  z-index: 2; /* higher z-index value */
 }
