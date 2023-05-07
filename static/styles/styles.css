@@ -1,0 +1,19 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.thumbnail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.thumbnail {
+  max-width: 500px;
+  /*max-height: 200px;*/
+  object-fit: contain;
+  margin: 5px;
+}

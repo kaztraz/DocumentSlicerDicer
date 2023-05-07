@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Document Slicer and Dicer</title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+  </head>
+  <body>
+    <div id="drop-zone">
+      <p>Drag and drop a PDF file here</p>
+    </div>  
+    <input type="hidden" id="lastOpenedFiles" value="2">
+    <h1>Upload PDF</h1>
+    <form id="upload-form">
+      <input type="file" name="pdf_file" accept="application/pdf">
+    </form>
+    <label for="zoom">Thumbnail Zoom:</label>
+    <input type="range" min="50" max="200" value="100" class="slider" id="zoom" onchange="adjustZoom()">
+    <div class="thumbnail-container" id="thumbnails">
+    </div>
+    <script src="/static/scripts/scripts.js"></script>
+  </body>
+</html>
