@@ -6,18 +6,25 @@
     <link rel="stylesheet" href="/static/styles/styles.css">
   </head>
   <body>
-    <div id="drop-zone">
-      <p>Drag and drop a PDF file here</p>
-    </div>  
     <input type="hidden" id="lastOpenedFiles" value="2">
     <h1>Upload PDF</h1>
     <form id="upload-form">
-      <input type="file" name="pdf_file" accept="application/pdf">
+      <input type="file" name="pdf_file" accept="application/pdf" onchange="uploadPdf(event)">
     </form>
     <label for="zoom">Thumbnail Zoom:</label>
-    <input type="range" min="50" max="200" value="100" class="slider" id="zoom" onchange="adjustZoom()">
+    <input type="range" min="50" max="200" value="100" class="slider" id="zoom">
     <div class="thumbnail-container" id="thumbnails">
     </div>
-    <script src="/static/scripts/scripts.js"></script>
+    <div id="spinner" class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+    
+    <div id="drop-zone">
+      Drop your PDF files here
+    </div>
+
+    <script src="/static/scripts/script.js" type="module"></script>
+
   </body>
 </html>
