@@ -17,17 +17,24 @@ h1 {
 }
 
 .thumbnail-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: calc(100vh - 150px);
+  gap: 10px;
 }
+
+
 
 .thumbnail {
   max-width: 100%;
+  /* max-height: 100%;
+  width: auto; */
+  height: 100%;
   object-fit: contain;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin: auto;
 }
 
 #drop-zone {
