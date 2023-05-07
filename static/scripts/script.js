@@ -2,6 +2,7 @@ import { loadLastOpenedFiles } from "./loadLastOpenedFiles.js";
 import { adjustZoom } from "./adjustZoom.js";
 import { displayThumbnails } from "./displayThumbnails.js";
 import { uploadPdf } from "./uploadPdf.js";
+import { initDragAndDrop } from "./drag_and_drop.js";
 
 window.loadLastOpenedFiles = loadLastOpenedFiles;
 window.adjustZoom = adjustZoom;

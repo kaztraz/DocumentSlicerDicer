@@ -1,31 +1,38 @@
 async function uploadPdf(event) {
-  event.preventDefault();
-  const form = event.target;
+  if (event) {
+    event.preventDefault();
+  }
+  const form = document.getElementById("upload-form");
   const formData = new FormData(form);
   const fileInput = form.querySelector('input[name="pdf_file"]');
   const file = fileInput.files[0];
 
-  loader.style.display = 'flex'; // show the loader
+  const loader = document.getElementById("spinner");
+  loader.style.display = "flex"; // Show the loader
 
-  formData.append('pdf_file', file);
-  const response = await fetch('/upload_pdf', {
-    method: 'POST',
-    body: formData,
-  });
-  const lastOpenedFilesInput = document.getElementById('lastOpenedFiles');
-  let lastOpenedFiles = lastOpenedFilesInput.value ? JSON.parse(lastOpenedFilesInput.value) : [];
+  try {
+    formData.append("pdf_file", file);
+    const response = await fetch('/upload_pdf', {
+      method: 'POST',
+      body: formData,
+    });
+    const lastOpenedFilesInput = document.getElementById('lastOpenedFiles');
+    let lastOpenedFiles = lastOpenedFilesInput.value && Array.isArray(JSON.parse(lastOpenedFilesInput.value)) ? JSON.parse(lastOpenedFilesInput.value) : [];
 
-  lastOpenedFiles.push(file.name);
-  if (lastOpenedFiles.length > 2) {
-    lastOpenedFiles.shift(); // Remove the oldest file
+    lastOpenedFiles.push(file.name);
+    if (lastOpenedFiles.length > 2) {
+      lastOpenedFiles.shift(); // Remove the oldest file
+    }
+
+    lastOpenedFilesInput.value = JSON.stringify(lastOpenedFiles);
+    const jsonResponse = await response.json();
+    displayThumbnails(jsonResponse.thumbnail_paths);
+    form.reset();
+  } catch (error) {
+    console.error("Error during PDF upload:", error);
+  } finally {
+    loader.style.display = 'none'; // Hide the loader
   }
-
-  lastOpenedFilesInput.value = JSON.stringify(lastOpenedFiles);
-  const jsonResponse = await response.json();
-  displayThumbnails(jsonResponse.thumbnail_paths);
-  form.reset();
-
-  loader.style.display = 'none'; // hide the loader
 }
 
 export { uploadPdf };
